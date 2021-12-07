@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 public class ExplosionVertical extends Explosion {
     /**
      * No theo chieu doc.
+     * No theo chieu doc.
      * @param position
      * @param bomRadius
      */

@@ -80,7 +80,7 @@ public class Player extends MovingEntities {
     }
     public void increaseBombRadius(int radius) {
         System.out.println("Current Rate: " + bombRadius);
-        bombRadius = Math.max(4, bombRadius + radius);
+        bombRadius = Math.min(4, bombRadius + radius);
         System.out.println("Up to: " + bombRadius + " radius");
     }
     public void speedUp(float speed) {
