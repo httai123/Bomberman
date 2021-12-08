@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 public class ExplosionHorizontal extends Explosion {
     /**
      * No theo chieu ngang.
+     *
      * @param position
      * @param bombRadius
      */
@@ -34,10 +35,12 @@ public class ExplosionHorizontal extends Explosion {
             for (int index = 0; index < GameTile.tiles.size(); index++) {
                 Tile tile = GameTile.tiles.get(index);
                 if (tile.getCollide().contains(value, position.y)) {
-                    if (!tile.isBreakable()) {
-                        // ko the no tuong nen do rong giam.
-                        value -= blockWidth;
+                    if (tile.isBreakable()) {
+                        return value;
                     }
+                    // ko the no tuong nen do rong giam.
+                    value -= blockWidth;
+
                 }
             }
         }
@@ -47,6 +50,7 @@ public class ExplosionHorizontal extends Explosion {
 
     /**
      * Ve su no.
+     *
      * @param width
      * @param height
      * @return

@@ -9,6 +9,7 @@ public class HUD {
     boolean matchSet;
     private int level;
     private BufferedImage playerInfo;
+
     public HUD() {
         this.matchSet = false;
         this.level = 1;
@@ -31,8 +32,8 @@ public class HUD {
         this.players = player;
     }
 
-    public void init(){
-        playerInfo = new BufferedImage(GamePanel.REAL_WIDTH /1, Display.HEIGHT,BufferedImage.TYPE_INT_RGB);
+    public void init() {
+        playerInfo = new BufferedImage(GamePanel.REAL_WIDTH / 1, Display.HEIGHT, BufferedImage.TYPE_INT_RGB);
     }
 
     public BufferedImage getPlayerInfo() {
@@ -40,19 +41,19 @@ public class HUD {
     }
 
     public void update() {
-        try{
-            if(players.isDead()){
+        try {
+            if (players.isDead()) {
                 this.matchSet = true;
             }
-            if(this.players.isNextLevel()){
-                if(!this.players.isDead()){
+            if (this.players.isNextLevel()) {
+                if (!this.players.isDead()) {
                     this.players.setDead();
                 }
                 this.matchSet = true;
                 level++;
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Ko load dc next level");
         }
 //        try {
@@ -89,16 +90,16 @@ public class HUD {
         playerGraphics.clearRect(0, 0, playerInfo.getWidth(), playerInfo.getHeight());
         playerGraphics.setColor(Color.ORANGE);    // Player 1 info box border color
 
-            Font font = new Font("Arial", Font.BOLD, 24);
-            playerGraphics.drawRect(1, 1, this.playerInfo.getWidth() - 2, this.playerInfo.getHeight() - 2);
-            playerGraphics.drawImage(this.players.getStartSprite(), 0, 0, null);
+        Font font = new Font("Arial", Font.BOLD, 24);
+        playerGraphics.drawRect(1, 1, this.playerInfo.getWidth() - 2, this.playerInfo.getHeight() - 2);
+        playerGraphics.drawImage(this.players.getStartSprite(), 0, 0, null);
 
-            // Draw score
-            playerGraphics.setFont(font);
-            playerGraphics.setColor(Color.ORANGE);
-            playerGraphics.drawString("Level: " + this.level,
-                    this.playerInfo.getWidth() / 2 + 45, 32);
+        // Draw score
+        playerGraphics.setFont(font);
+        playerGraphics.setColor(Color.ORANGE);
+        playerGraphics.drawString("Level: " + this.level,
+                this.playerInfo.getWidth() / 2 - 45, 32);
 
-            playerGraphics.dispose();
-        }
+        playerGraphics.dispose();
     }
+}

@@ -8,7 +8,7 @@ import java.util.Random;
 public class Powerup extends Tile {
     public static float randomPortal;
     public static float randomStrongItem;
-
+    public static int numberOfPortals;
     public enum Items {
         Bomb(FileInput.Images.POWER_BOMB.getImage()) {
             @Override
@@ -75,7 +75,10 @@ public class Powerup extends Tile {
     public static final Items randomPower() {
         randomStrongItem = (float) Math.random();
         System.out.println(randomStrongItem);
-        if (randomPortal == 2) return powerups[4];
+        if (randomPortal == 2 && numberOfPortals == 0) {
+            numberOfPortals = 1;
+            return powerups[4];
+        }
         else return powerups[random.nextInt(powerups.length - 2)];
     }
 
@@ -91,6 +94,7 @@ public class Powerup extends Tile {
     @Override
     public void update() {
         if (this.checkExplosion()) {
+            numberOfPortals = 0;
             // chen sound an powerup here.
             this.disappear();
         }

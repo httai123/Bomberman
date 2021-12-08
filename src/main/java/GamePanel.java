@@ -257,7 +257,7 @@ public class GamePanel extends JPanel implements Runnable {
         GameTile.sortBomberObjects();
         // Khi enimies died het thi xuat hien portal.
         if (GameTile.enemies.size() == 0 && GameTile.oneals.size() == 0
-                && GameTile.dolls.size() == 0) {
+                && GameTile.dolls.size() == 0 && Powerup.randomPortal != 2 && Powerup.numberOfPortals == 0) {
             Powerup.randomPortal = 2;
         }
         for (int i = 0; i < GameTile.gameTile.size(); i++) {

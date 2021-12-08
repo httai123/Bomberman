@@ -9,6 +9,7 @@ public class ExplosionVertical extends Explosion {
     /**
      * No theo chieu doc.
      * No theo chieu doc.
+     *
      * @param position
      * @param bomRadius
      */
@@ -17,8 +18,8 @@ public class ExplosionVertical extends Explosion {
         float topY = this.checkVertical(this.getPosition(), bomRadius, -32);
         float bottomY = this.checkVertical(this.getPosition(), bomRadius, 32);
         this.centerOffset = position.y - topY;
-        Rectangle2D.Float recV = new Rectangle2D.Float(this.getPosition().x, topY, 32, bottomY - topY + 32);
-        this.init(recV);
+        Rectangle2D.Float rect = new Rectangle2D.Float(this.getPosition().x, topY, 32, bottomY - topY + 32);
+        this.init(rect);
         this.animation = this.drawSprite((int) this.getWidth(), (int) this.getHeight());
         setSprite(this.animation[0]);
     }
@@ -31,9 +32,10 @@ public class ExplosionVertical extends Explosion {
             for (int index = 0; index < GameTile.tiles.size(); index++) {
                 Tile tile = GameTile.tiles.get(index);
                 if (tile.getCollide().contains(position.x, value)) {
-                    if (!tile.isBreakable()) {
+                        if(tile.isBreakable()){
+                            return value;
+                        }
                         value -= blockHeight;
-                    }
                 }
             }
         }

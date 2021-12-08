@@ -143,10 +143,6 @@ public abstract class Entity implements Observable, HandleCollision {
         g2d.drawImage(this.sprite, rotation, null);
     }
 
-    @Override
-    public int compareTo(Entity o) {
-        return Float.compare(this.position.y, o.position.y);
-    }
 }
 
 
