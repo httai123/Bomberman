@@ -9,7 +9,7 @@ public class BombermanGame {
 
         GamePanel game = new GamePanel();
         game.init();
-       // sound game o day
+        MusicPlayer.playBGM();
         window = new Display(game);
 
         System.gc();
