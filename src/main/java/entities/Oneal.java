@@ -79,6 +79,7 @@ public class Oneal extends Enemy {
                     || (this.spriteIndex >= this.sprites[0].length)) {
                 this.spriteIndex = 0;
             }
+
             setSprite(this.sprites[this.moveDirect][this.spriteIndex]);
 
             if (this.moveUp) {
@@ -126,58 +127,67 @@ public class Oneal extends Enemy {
     }
 
     @Override
-    public void startCollision(Entity collidingObj) {
-        collidingObj.handleCollision(this);
+    public void startCollision(Entity entity) {
+        entity.handleCollision(this);
     }
 
     @Override
-    public void handleCollision(Player collidingObj) {
-        if (!this.isDead) collidingObj.setDead();
+    public void handleCollision(Player player) {
+        if(!this.isDead) player.setDead();
     }
 
     @Override
-    public void handleCollision(Wall collidingObj) {
-        if (!collidingObj.isBreakable()) {
-            this.hardCollision(collidingObj);
-            int keyRandom = (int) Math.round(Math.random() * 3);
-            this.hardCollision(collidingObj);
-            if (keyMove == 0) {
-                keyMove = keyRandom;
-            } else if (keyMove == 1) {
-                keyMove = keyRandom;
-            } else if (keyMove == 2) {
-                keyMove = keyRandom;
-            } else keyMove = keyRandom;
-        }
-    }
-
-    @Override
-    public void handleCollision(Explosion collidingObj) {
-        if (!this.isDead) {
-            this.isDead = true;
-            this.spriteIndex = 0;
-        }
-    }
-
-    @Override
-    public void handleCollision(Bomb collidingObj) {
+    public void handleCollision(Wall wall) {
         int keyRandom = (int) Math.round(Math.random() * 3);
-        this.hardCollision(collidingObj);
+        this.hardCollision(wall);
         if (keyMove == 0) {
             keyMove = keyRandom;
         } else if (keyMove == 1) {
             keyMove = keyRandom;
         } else if (keyMove == 2) {
             keyMove = keyRandom;
-        } else if (keyMove == 3) {
+        } else keyMove = keyRandom;
+    }
+
+    @Override
+    public void handleCollision(Explosion explosion) {
+        if (!this.isDead) {
+            // sound enemies dead here
+            this.isDead = true;
+            this.spriteIndex = 0;
+        }
+    }
+
+    @Override
+    public void handleCollision(Bomb bomb) {
+        int keyRandom = (int) Math.round(Math.random() * 3);
+        this.hardCollision(bomb);
+        if (keyMove == 0) {
+            keyMove = keyRandom;
+        }
+        else if (keyMove == 1) {
+            keyMove = keyRandom;
+        }
+        else if (keyMove == 2) {
+            keyMove = keyRandom;
+        }
+        else if (keyMove == 3) {
             keyMove = keyRandom;
         }
     }
 
     @Override
-    public void handleCollision(Powerup collidingObj) {
+    public void handleCollision(Powerup powerup) {
         this.speed += 0.5;
-        collidingObj.disappear();
+        powerup.disappear();
+    }
+
+    public void setEnemies(String enemies) {
+        this.enemies = enemies;
+    }
+
+    public String getEnemies() {
+        return enemies;
     }
 
 }

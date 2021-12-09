@@ -3,7 +3,7 @@ package entities;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
-public class Minvo extends Enemy {
+public class Kondoria extends Enemy{
     private static int keyMove;
     private boolean isDead;
     private double speed;
@@ -13,12 +13,12 @@ public class Minvo extends Enemy {
     private String enemies;
     private BufferedImage[][] sprites;
 
-    public Minvo(Point2D.Float position, BufferedImage[][] spriteMap) {
+    public Kondoria(Point2D.Float position, BufferedImage[][] spriteMap) {
         super(position, spriteMap);
         this.getCollide().setRect(this.getPosition().x + 3, this.getPosition().y + 16 + 3,
                 this.getWidth() - 6, this.getHeight() - 16 - 6);
         this.sprites = spriteMap;
-        this.moveDirect = 1;
+        this.moveDirect = 3;
         this.spriteIndex = 0;
         this.spriteTimer = 0;
         this.speed = 1.0;
@@ -79,6 +79,7 @@ public class Minvo extends Enemy {
                     || (this.spriteIndex >= this.sprites[0].length)) {
                 this.spriteIndex = 0;
             }
+
             setSprite(this.sprites[this.moveDirect][this.spriteIndex]);
 
             if (this.moveUp) {
@@ -126,46 +127,41 @@ public class Minvo extends Enemy {
     }
 
     @Override
-    public void startCollision(Entity collidingObj) {
-        collidingObj.handleCollision(this);
+    public void startCollision(Entity entity) {
+        entity.handleCollision(this);
     }
 
     @Override
-    public void handleCollision(Player collidingObj) {
-        if(!this.isDead) collidingObj.setDead();
+    public void handleCollision(Player player) {
+        if(!this.isDead) player.setDead();
     }
 
     @Override
-    public void handleCollision(Wall collidingObj) {
-        if (!collidingObj.isBreakable()) {
-            this.hardCollision(collidingObj);
-            int keyRandom = (int) Math.round(Math.random() * 3);
-            this.hardCollision(collidingObj);
-            if (keyMove == 0) {
-                keyMove = keyRandom;
-            }
-            else if (keyMove == 1) {
-                keyMove = keyRandom;
-            }
-            else if (keyMove == 2) {
-                keyMove = keyRandom;
-            }
-            else keyMove = keyRandom;
-        }
+    public void handleCollision(Wall wall) {
+        int keyRandom = (int) Math.round(Math.random() * 3);
+        this.hardCollision(wall);
+        if (keyMove == 0) {
+            keyMove = keyRandom;
+        } else if (keyMove == 1) {
+            keyMove = keyRandom;
+        } else if (keyMove == 2) {
+            keyMove = keyRandom;
+        } else keyMove = keyRandom;
     }
 
     @Override
-    public void handleCollision(Explosion collidingObj) {
+    public void handleCollision(Explosion explosion) {
         if (!this.isDead) {
+            // sound enemies dead here
             this.isDead = true;
             this.spriteIndex = 0;
         }
     }
 
     @Override
-    public void handleCollision(Bomb collidingObj) {
+    public void handleCollision(Bomb bomb) {
         int keyRandom = (int) Math.round(Math.random() * 3);
-        this.hardCollision(collidingObj);
+        this.hardCollision(bomb);
         if (keyMove == 0) {
             keyMove = keyRandom;
         }
@@ -181,9 +177,16 @@ public class Minvo extends Enemy {
     }
 
     @Override
-    public void handleCollision(Powerup collidingObj) {
+    public void handleCollision(Powerup powerup) {
         this.speed += 0.5;
-        collidingObj.disappear();
+        powerup.disappear();
     }
 
+    public void setEnemies(String enemies) {
+        this.enemies = enemies;
+    }
+
+    public String getEnemies() {
+        return enemies;
+    }
 }

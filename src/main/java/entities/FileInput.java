@@ -22,6 +22,9 @@ public class FileInput {
         PLAYER,
         BOMB,
         DOLL,
+        MINVO,
+        KONDORIA,
+        BALLOOM,
         ONEAL,
         EXPLOSION_SPRITEMAP;
 
@@ -60,12 +63,14 @@ public class FileInput {
             Images.POWER_SPEED.image = ImageIO.read(FileInput.class.getResource("/textures/powerup_speed.png"));
             Images.POWER_TIME.image = ImageIO.read(FileInput.class.getResource("/textures/powerup_time.png"));
             Images.PORTAL.image = ImageIO.read(FileInput.class.getResource("/textures/Portal.png"));
-            SpriteMap.PLAYER.image = ImageIO.read(FileInput.class.getResource("/textures/bomber.png"));
+            SpriteMap.PLAYER.image = ImageIO.read(FileInput.class.getResource("/textures/bomber1.png"));
             SpriteMap.BOMB.image = ImageIO.read(FileInput.class.getResource("/textures/Bomb.png"));
             SpriteMap.EXPLOSION_SPRITEMAP.image = ImageIO.read(FileInput.class.getResource("/textures/Explosion.png"));
             SpriteMap.ONEAL.image = ImageIO.read(FileInput.class.getResource("/textures/oneal.png"));
             SpriteMap.DOLL.image = ImageIO.read(FileInput.class.getResource("/textures/doll.png"));
-
+            SpriteMap.BALLOOM.image = ImageIO.read(FileInput.class.getResource("/textures/balloom.png"));
+            SpriteMap.MINVO.image = ImageIO.read(FileInput.class.getResource("/textures/minvo.png"));
+            SpriteMap.KONDORIA.image = ImageIO.read(FileInput.class.getResource("/textures/kondoria.png"));
             Files.LEVEL1.file = new InputStreamReader(FileInput.class.getResourceAsStream("/textures/maps/Level1.txt"));
             Files.LEVEL2.file = new InputStreamReader(FileInput.class.getResourceAsStream("/textures/maps/Level2.txt"));
             Files.LEVEL3.file = new InputStreamReader(FileInput.class.getResourceAsStream("/textures/maps/Level3.txt"));
@@ -90,6 +95,9 @@ public class FileInput {
     public static void init() {
         SpriteMap.PLAYER.sprites = cropMap(SpriteMap.PLAYER.image, 32, 48);
         SpriteMap.ONEAL.sprites = cropMap(SpriteMap.ONEAL.image, 32, 48);
+        SpriteMap.BALLOOM.sprites = cropMap(SpriteMap.BALLOOM.image, 32, 48);
+        SpriteMap.MINVO.sprites = cropMap(SpriteMap.MINVO.image, 32, 48);
+        SpriteMap.KONDORIA.sprites = cropMap(SpriteMap.KONDORIA.image, 32, 48);
         SpriteMap.DOLL.sprites = cropMap(SpriteMap.DOLL.image, 32, 48);
         SpriteMap.BOMB.sprites = cropMap(SpriteMap.BOMB.image, 32, 32);
         SpriteMap.EXPLOSION_SPRITEMAP.sprites = cropMap(SpriteMap.EXPLOSION_SPRITEMAP.image, 32, 32);

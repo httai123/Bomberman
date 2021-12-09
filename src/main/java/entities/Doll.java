@@ -21,7 +21,7 @@ public class Doll extends Enemy {
         this.moveDirect = 2;
         this.spriteIndex = 0;
         this.spriteTimer = 0;
-        this.speed = 2.0;
+        this.speed = 1.0;
         keyMove = 0;
     }
 
@@ -138,21 +138,15 @@ public class Doll extends Enemy {
 
     @Override
     public void handleCollision(Wall wall) {
-        if (!wall.isBreakable()) {
-            this.hardCollision(wall);
-            int keyRandom = (int) Math.round(Math.random() * 3);
-            this.hardCollision(wall);
-            if (keyMove == 0) {
-                keyMove = keyRandom;
-            }
-            else if (keyMove == 1) {
-                keyMove = keyRandom;
-            }
-            else if (keyMove == 2) {
-                keyMove = keyRandom;
-            }
-            else keyMove = keyRandom;
-        }
+        int keyRandom = (int) Math.round(Math.random() * 3);
+        this.hardCollision(wall);
+        if (keyMove == 0) {
+            keyMove = keyRandom;
+        } else if (keyMove == 1) {
+            keyMove = keyRandom;
+        } else if (keyMove == 2) {
+            keyMove = keyRandom;
+        } else keyMove = keyRandom;
     }
 
     @Override

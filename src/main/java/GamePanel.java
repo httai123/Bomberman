@@ -135,9 +135,24 @@ public class GamePanel extends JPanel implements Runnable {
                         GameTile.act(oneal);
                         break;
 
+                    case ("m"): // Minvo
+                        BufferedImage[][] minvo = FileInput.SpriteMap.MINVO.getSprites();
+                        Minvo minvo1 = new Minvo(new Point2D.Float(x * 32, y * 32 - 16), minvo);
+                        GameTile.act(minvo1);
+                        break;
+                    case ("k"): // kondoria
+                        BufferedImage[][] enemy3 = FileInput.SpriteMap.KONDORIA.getSprites();
+                        Kondoria kondoria = new Kondoria(new Point2D.Float(x * 32, y * 32 - 16), enemy3);
+                        GameTile.act(kondoria);
+                        break;
+                    case ("b"): // balloom
+                        BufferedImage[][] enemy4 = FileInput.SpriteMap.BALLOOM.getSprites();
+                        Balloom balloom = new Balloom(new Point2D.Float(x * 32, y * 32 - 16), enemy4);
+                        GameTile.act(balloom);
+                        break;
                     case ("d"): // Doll
                         BufferedImage[][] enemy2 = FileInput.SpriteMap.DOLL.getSprites();
-                        Enemy doll = new Enemy(new Point2D.Float(x * 32, y * 32 - 16), enemy2);
+                        Doll doll = new Doll(new Point2D.Float(x * 32, y * 32 - 16), enemy2);
                         GameTile.act(doll);
                         break;
 
