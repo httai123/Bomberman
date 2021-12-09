@@ -32,7 +32,7 @@ public class Bomb extends Tile {
         GameTile.act(new ExplosionHorizontal(this.getPosition(), this.bombRadius));
         GameTile.act(new ExplosionVertical(this.getPosition(), this.bombRadius));
         this.player.restoreBomb();
-        // them sound bomb no cho nay
+        MusicPlayer.SFX(1);
     }
 
 
