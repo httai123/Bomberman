@@ -186,6 +186,7 @@ public class Player extends MovingEntities {
     }
     @Override
     public void handleCollision(Powerup powerup) {
+        // sound an power up
         powerup.grantBonus(this);
         powerup.disappear();
     }

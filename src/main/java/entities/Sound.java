@@ -17,7 +17,6 @@ public class Sound {
         soundURL[4] = getClass().getResource("/Sounds/OnealDie.wav");
 
     }
-
     public void setFile(int i) {
         try {
             AudioInputStream audioIS = AudioSystem.getAudioInputStream(soundURL[i]);

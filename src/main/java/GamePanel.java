@@ -309,9 +309,12 @@ public class GamePanel extends JPanel implements Runnable {
             boolean checkSupreme = false;
             for (Player player : GameTile.players) {
                 if (player.isNextLevel()) {
-                    for (Enemy monster : GameTile.enemies) monster.setDead();
-                    for (Oneal dragonMonster : GameTile.oneals) dragonMonster.setDead();
-                    for (Doll dragonRiderMonster : GameTile.dolls) dragonRiderMonster.setDead();
+                    for (Enemy enemy : GameTile.enemies) enemy.setDead();
+                    for (Oneal oneal : GameTile.oneals) oneal.setDead();
+                    for (Doll doll : GameTile.dolls) doll.setDead();
+                    for (Kondoria kondoria : GameTile.kondorias) kondoria.setDead();
+                    for (Balloom balloom : GameTile.ballooms) balloom.setDead();
+                    for (Minvo minvo : GameTile.minvos) minvo.setDead();
                     checkSupreme = true;
                     break;
                 }
