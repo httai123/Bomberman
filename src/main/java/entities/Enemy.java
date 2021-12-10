@@ -151,7 +151,7 @@ public class Enemy extends MovingEntities {
     @Override
     public void handleCollision(Explosion explosion) {
         if (!this.isDead) {
-            // sound dead here
+            MusicPlayer.SFX(4);
             this.isDead = true;
             this.spriteIndex = 0;
         }
