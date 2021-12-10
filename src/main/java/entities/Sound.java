@@ -26,7 +26,7 @@ public class Sound {
             clip.open(audioIS);
             if (i == 0) {
                 FloatControl control = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-                control.setValue(-10.0f);
+                control.setValue(-15.0f);
                 System.out.println("BGM volume decreased");
             }
         } catch (Exception e) {
