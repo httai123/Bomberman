@@ -167,7 +167,7 @@ public class Player extends MovingEntities {
     @Override
     public void handleCollision(Explosion explosion) {
         if (!this.dead) {
-            // sound dead here
+            MusicPlayer.SFX(2);
             this.dead = true;
             this.spriteIndex = 0;
         }
