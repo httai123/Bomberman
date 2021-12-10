@@ -152,7 +152,7 @@ public class Balloom extends Enemy{
     @Override
     public void handleCollision(Explosion explosion) {
         if (!this.isDead) {
-            MusicPlayer.SFX(3);
+            MusicPlayer.SFX(4);
             this.isDead = true;
             this.spriteIndex = 0;
         }

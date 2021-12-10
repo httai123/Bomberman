@@ -3,6 +3,7 @@ package entities;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import java.net.URL;
 
 public class Sound {
@@ -23,6 +24,11 @@ public class Sound {
             AudioInputStream audioIS = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(audioIS);
+            if (i == 0) {
+                FloatControl control = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                control.setValue(-10.0f);
+                System.out.println("BGM volume decreased");
+            }
         } catch (Exception e) {
             System.out.println("audio jam");
         }

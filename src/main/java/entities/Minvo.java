@@ -159,6 +159,7 @@ public class Minvo extends Enemy {
         if (!this.isDead) {
             this.isDead = true;
             this.spriteIndex = 0;
+            MusicPlayer.SFX(4);
         }
     }
 
