@@ -63,6 +63,18 @@ public class GameTile {
         dolls.add(doll);
     }
 
+    public static void act(Minvo minvo) {
+        minvos.add(minvo);
+    }
+
+    public static void act(Kondoria kondoria) {
+        kondorias.add(kondoria);
+    }
+
+    public static void act(Balloom balloom) {
+        ballooms.add(balloom);
+    }
+
     public static void sortBomberObjects() {
         players.sort(Comparator.comparing(Entity::getPositionY));
     }
