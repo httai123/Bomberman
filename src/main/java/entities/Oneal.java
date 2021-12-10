@@ -152,7 +152,7 @@ public class Oneal extends Enemy {
     @Override
     public void handleCollision(Explosion explosion) {
         if (!this.isDead) {
-            // sound enemies dead here
+            MusicPlayer.SFX(4);
             this.isDead = true;
             this.spriteIndex = 0;
         }
