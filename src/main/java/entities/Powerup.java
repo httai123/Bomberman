@@ -88,7 +88,7 @@ public class Powerup extends Tile {
      */
     public void grantBonus(Player player) {
         this.items.grantBonus(player);
-
+        MusicPlayer.SFX(3);
     }
 
     @Override
