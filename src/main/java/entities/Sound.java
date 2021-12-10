@@ -15,6 +15,7 @@ public class Sound {
         soundURL[2] = getClass().getResource("/Sounds/PDie.wav");
         soundURL[3] = getClass().getResource("/Sounds/PowerUp.wav");
         soundURL[4] = getClass().getResource("/Sounds/OnealDie.wav");
+        soundURL[5] = getClass().getResource("/Sounds/PassLevel.wav");
 
     }
     public void setFile(int i) {
