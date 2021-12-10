@@ -320,7 +320,7 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
             if (checkSupreme) {
-                // sound Level up here.
+                MusicPlayer.SFX(5);
                 this.resetMap(this.gameHUD.getLevel() - 1);
                 this.gameHUD.matchSet = false;
                 System.out.println("NEXT LEVEL");
