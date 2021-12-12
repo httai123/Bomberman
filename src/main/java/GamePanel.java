@@ -193,6 +193,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void nextMap() {
         if (this.gameHUD.getLevel() < 4) {
+            MusicPlayer.SFX(5);
             this.gameHUD.setLevel(this.gameHUD.getLevel() + 1);
             this.resetMap(this.gameHUD.getLevel() - 1);
             Powerup.randomPortal = 0;
@@ -332,7 +333,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.screenDelay++;
 
         try {
-            Thread.sleep(500 / 144);
+            Thread.sleep(500/144);
         } catch (InterruptedException ignored) {
         }
     }
@@ -356,7 +357,7 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("");
         }
         int infoBoxWidth = REAL_WIDTH / 2;
         g2.drawImage(this.gameHUD.getPlayerInfo(), infoBoxWidth * 0, 0, null);
